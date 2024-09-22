@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    Projects::Create::Service.new({}).call
+    Projects::Create::Service.new(create_project_params).call
     redirect_to projects_path, flash: { success: 'Project created successfully!' }
   rescue ActiveModel::ValidationError
     flash.now[:error] = 'Failed to create project.'
@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Projects::Update::Service.new(params[:id], update_project_params).call
-    redirect_to project_path(project), flash: { success: 'Project updated successfully!' }
+    redirect_to project_path(@project), flash: { success: 'Project updated successfully!' }
   rescue ActiveModel::ValidationError
     flash.now[:error] = 'Failed to update project.'
     render :edit
