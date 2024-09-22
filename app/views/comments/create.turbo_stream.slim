@@ -1,0 +1,5 @@
+= turbo_stream.replace "project_comment_form"
+  = render partial: "comments/form", locals: { project: @project, comment: @project.comments.build }
+
+= turbo_stream.prepend "project_#{@project.id}_comments"
+  = render partial: "comments/comment", locals: { comment: @comment }

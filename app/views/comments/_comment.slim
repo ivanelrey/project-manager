@@ -1,0 +1,10 @@
+div.p-6.mb-6.text-base.bg-white.rounded-lg
+  div.flex.justify-between.items-center.mb-2
+    div.flex.items-center
+      p.inline-flex.items-center.mr-3.font-semibold.text-sm.text-gray-900
+        = image_tag("user.png", class: 'mr-2 w-6 h-6 rounded-full')
+        | Anonymous
+      p.text-sm.text-gray-600
+        = comment.created_at
+  p
+    = comment.body

@@ -1,0 +1,11 @@
+.bg-gray-50.rounded-lg.shadow.hover:scale-105
+  = link_to project_path(project), class: 'sm:flex items-center' do
+    div
+      = image_tag(project_img_src(project.id), class: "sm:w-40 rounded-lg sm:rounded-none sm:rounded-l-lg")
+    .p-5
+      h3.text-xl.font-bold.tracking-tight.text-gray-900
+        = project.name
+      span.text-gray-500.text-sm
+        = project.created_at
+      p.mt-3.mb-4.font-light.text-gray-500
+        = project.description.truncate(20)

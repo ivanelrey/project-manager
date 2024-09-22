@@ -1,0 +1,5 @@
+= form_with class: 'space-y-8', model: project, data: { turbo: "false" } do |form|
+  div
+    = form.label :status, class: 'block mb-2 text-sm font-medium text-gray-900'
+    = form.select :status, @available_statuses
+  = form.submit class: 'py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:cursor-pointer', value: 'Update Project'

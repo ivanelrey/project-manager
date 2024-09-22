@@ -1,0 +1,28 @@
+require:
+  - rubocop-faker
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - "db/**/*"
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "config/**/*"
+    - "tmp/**/*"
+    - "log/**/*"
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false

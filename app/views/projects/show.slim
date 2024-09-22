@@ -1,0 +1,19 @@
+section.bg-white
+  div.py-8.px-4.mx-auto.max-w-2xl.lg:py-16
+    h2.mb-2.text-xl.font-semibold.leading-none.text-gray-900.md:text-2xl
+      = "#{@project.name} (#{@project.status})"
+    span
+      = link_to 'Update Status', edit_project_path(@project), class: 'underline'
+    = image_tag(project_img_src(@project.id), class: "mb-6")
+    dl
+      dt.mb-2.font-semibold.leading-none.text-gray-900 Description
+      dd.mb-4.font-light.text-gray-500.sm:mb-5
+        = @project.description
+
+section.mx-auto.max-w-2xl
+  div.flex.justify-between.items-center.mb-6
+    h2.text-lg.lg:text-2xl.font-bold.text-gray-900 Discussion
+  = turbo_frame_tag 'project_comment_form' do
+    = render partial: "comments/form", locals: { project: @project, comment: @project.comments.build }
+  = turbo_frame_tag "project_#{@project.id}_comments" do
+    = render partial: "comments/comment", collection: @comments
