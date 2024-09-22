@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://project-manager-app-9a39e3a2d4d1.herokuapp.com/
 
-Things you may want to cover:
+Stack used and codebase:
 
-* Ruby version
+* Rails
 
-* System dependencies
+* Rspec + FactoryBot
 
-* Configuration
+* Heroku
 
-* Database creation
+* Form objects
 
-* Database initialization
+* Service Objects
 
-* How to run the test suite
+* Tailwind
 
-* Services (job queues, cache servers, search engines, etc.)
+* Slim
 
-* Deployment instructions
+* Github actions
 
-* ...
+* Rubocop
+
+* Brakeman
+
+
+Features built:
+
+* Create and list projects
+
+* Add and display comments for each project
+
+* Change status of the project and leave a comment if status was updated
+
+* Basic validation for project and comments
+
+* Flash messages (TODO: improve UI and ability to control flash messages with hotwire)
+
+
+
+Test Suite:
+
+* Models, Services and Forms tested
+
+* TODO: Add request and feature specs
+
