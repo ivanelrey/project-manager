@@ -4,8 +4,8 @@
       = image_tag(project_img_src(project.id), class: "sm:w-40 rounded-lg sm:rounded-none sm:rounded-l-lg")
     .p-5
       h3.text-xl.font-bold.tracking-tight.text-gray-900
-        = project.name
+        = project.name.truncate(20)
       span.text-gray-500.text-sm
         = project.created_at
       p.mt-3.mb-4.font-light.text-gray-500
-        = project.description.truncate(20)
+        = project.description.truncate(200)
