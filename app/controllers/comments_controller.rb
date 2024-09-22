@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @project = @comment.project
   rescue ActiveModel::ValidationError
     flash.now[:error] = 'Failed to add a comment.'
-    # render turbo_stream: turbo_stream.replace("flash", partial: "shared/flash_messages")
+    render turbo_stream: turbo_stream.replace("flash", partial: "layouts/flash_messages")
   end
 
   private

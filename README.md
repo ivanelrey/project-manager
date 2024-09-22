@@ -35,7 +35,7 @@ Features built:
 
 * Basic validation for project and comments
 
-* Flash messages (TODO: improve UI and ability to control flash messages with hotwire)
+* Flash messages (TODO: improve UI)
 
 
 
