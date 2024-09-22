@@ -9,10 +9,16 @@ module Projects
       end
 
       def call
+        old_status = project.status
+
         project.assign_attributes(params)
         validate_project!(project)
 
-        project.save!
+        ActiveRecord::Base.transaction do
+          project.save!
+          create_status_change_comment(old_status)
+        end
+
         project
       end
 
@@ -22,6 +28,17 @@ module Projects
 
       def validate_project!(project)
         Form.new(project).validate!
+      end
+
+      def create_status_change_comment(old_status)
+        return unless status_changed?(old_status)
+
+        body = "User has changed the project status from '#{old_status}' to '#{project.status}'."
+        Comments::Create::Service.new(project.id, { body: }).call
+      end
+
+      def status_changed?(old_status)
+        old_status != project.status
       end
     end
   end

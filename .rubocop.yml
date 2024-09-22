@@ -18,6 +18,8 @@ AllCops:
 Rails/I18nLocaleTexts:
   Enabled: false
 
+RSpec/NestedGroups:
+  Enabled: false
 RSpec/NamedSubject:
   Enabled: false
 Style/Documentation:

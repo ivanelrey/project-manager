@@ -15,6 +15,25 @@ RSpec.describe Projects::Update::Service do
         subject
         expect(project.reload.status).to eq params[:status]
       end
+
+      context 'when status is being updated' do
+        let(:expected_comment_body) { "User has changed the project status from 'draft' to 'completed'." }
+
+        it 'creates a comment about the change' do
+          expect { subject }.to change(Comment, :count).by 1
+
+          last_project_commment = project.comments.last
+          expect(last_project_commment.body).to eq expected_comment_body
+        end
+      end
+
+      context 'when status does not change' do
+        let(:params) { { status: 'draft' } }
+
+        it 'does not create a comment' do
+          expect { subject }.not_to change(Comment, :count)
+        end
+      end
     end
 
     context 'with invalid params' do
