@@ -23,16 +23,14 @@ class ProjectsController < ApplicationController
     Projects::Create::Service.new(create_project_params).call
     redirect_to projects_path, flash: { success: 'Project created successfully!' }
   rescue ActiveModel::ValidationError
-    flash.now[:error] = 'Failed to create project.'
-    render :new
+    redirect_to new_project_path, flash: { error: 'Failed to create project.' }
   end
 
   def update
     @project = Projects::Update::Service.new(params[:id], update_project_params).call
     redirect_to project_path(@project), flash: { success: 'Project updated successfully!' }
   rescue ActiveModel::ValidationError
-    flash.now[:error] = 'Failed to update project.'
-    render :edit
+    redirect_to edit_project_path(params[:id]), flash: { error: 'Failed to update project.' }
   end
 
   private
